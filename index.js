@@ -10,7 +10,7 @@ const apiai = require('apiai')(APIAI_TOKEN);
 app.use(express.static(__dirname + '/views')); // html
 app.use(express.static(__dirname + '/public')); // js, css, images
 
-const server = app.listen(5000, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
     console.log("app running on port 5000")
 });
 
