@@ -1,5 +1,13 @@
 const express = require('express');
 const app = express();
+const path = require("path");
+
+var cons = require('consolidate');
+
+// view engine setup
+app.engine('html', cons.swig)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 
 require('dotenv').config()
 var APIAI_TOKEN = process.env.APIAI_TOKEN;
@@ -15,7 +23,7 @@ const server = app.listen(process.env.PORT || 5000, () => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile('index.html');
+  res.render('index.html');
 });
 
 const io = require('socket.io')(server);

@@ -21,6 +21,7 @@ recognition.addEventListener('speechstart', () => {
 });
 
 recognition.addEventListener('result', (e) => {
+  console.log(e)
   console.log('Result has been detected.');
 
   let last = e.results.length - 1;
